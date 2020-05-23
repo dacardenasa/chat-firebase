@@ -43,7 +43,7 @@ $('#login').on('click', function(e){
 
 $('#logout').on('click', function(e){
   e.preventDefault();
-  firebase.auth().signOuth();
+  firebase.auth().signOut();
 })
 
 firebase.auth().getRedirectResult().then(function(result){
