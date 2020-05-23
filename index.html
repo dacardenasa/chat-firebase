@@ -14,7 +14,7 @@
       form {
         background: #000;
         padding: 3px;
-        position: fixed;
+        position: absolute;
         bottom: 0;
         width: 100%;
       }
@@ -30,6 +30,16 @@
         border: none;
         padding: 10px;
       }
+      .container {
+        position: relative;
+        width: 600px;
+        min-height: 400px;
+        margin: 50px auto;
+      }
+      .login {
+        display: flex;
+        flex-direction: row-reverse;
+      }
       #messages {
         list-style-type: none;
         margin: 0;
@@ -41,14 +51,28 @@
       #messages li:nth-child(odd) {
         background: #eee;
       }
+      #login {
+        display: none;
+      }
+      #logout {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <div class="container">
+      <div class="login">
+        <a href="#" id="login">Login with Github</a>
+        <a href="#" id="logout">Logout</a>
+      </div>
 
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+      <ul id="messages"></ul>
+
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->

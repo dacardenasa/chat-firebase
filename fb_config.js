@@ -20,7 +20,7 @@ messages.on('child_added', function(data){
 
 messages.on('child_removed', function(data){
   $('#messages #' + data.key).remove();
-})
+});
 
 $('form').on('submit', function(e){
   e.preventDefault();
@@ -33,4 +33,27 @@ $('form').on('submit', function(e){
       }
     }); 
     $('#m').val('');
+});
+
+$('#login').on('click', function(e){
+  e.preventDefault();
+  var provider = new firebase.auth.GithubAuthProvider();
+  firebase.auth().signInWithRedirect(provider);
+});
+
+$('#logout').on('click', function(e){
+  e.preventDefault();
+  firebase.auth().signOuth();
 })
+
+firebase.auth().getRedirectResult().then(function(result){
+  firebase.auth().onAuthStateChanged(function(user){
+    if (user) {
+      $('#login').hide();
+      $('#logout').show();
+    } else {
+      $('#login').show();
+      $('#logout').hide();
+    }
+  });
+});
